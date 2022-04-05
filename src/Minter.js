@@ -13,8 +13,10 @@ const Minter = (props) => {
     
   }, []);
 
-  const connectWalletPressed = async () => { //TODO: implement
-   
+  const connectWalletPressed = async () => {
+    const walletResponse = await connectWallet();
+    setStatus(walletResponse.status);
+    setWallet(walletResponse.address);
   };
 
   const onMintPressed = async () => { //TODO: implement
