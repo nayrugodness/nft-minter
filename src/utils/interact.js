@@ -89,9 +89,25 @@ export const getCurrentWalletConnected = async () => {
   export const mintNFT = async(url, name, description) => {
     //error handling
     if (url.trim() == "" || (name.trim() == "" || description.trim() == "")) { 
-      return {
-       success: false,
-       status: "❗Please make sure all fields are completed before minting.",
-      }
+           return {
+               success: false,
+               status: "❗Please make sure all fields are completed before minting.",
+           }
      }
+   
+     //make metadata
+     const metadata = new Object();
+     metadata.name = name;
+     metadata.image = url;
+     metadata.description = description;
+   
+     //make pinata call
+     const pinataResponse = await pinJSONToIPFS(metadata);
+     if (!pinataResponse.success) {
+         return {
+             success: false,
+             status: "😢 Something went wrong while uploading your tokenURI.",
+         }
+     } 
+     const tokenURI = pinataResponse.pinataUrl;  
    }
