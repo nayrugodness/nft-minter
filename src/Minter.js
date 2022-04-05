@@ -57,7 +57,7 @@ const Minter = (props) => {
 
   return (
     <div className="Minter">
-      <button id="walletButton" onClick={connectWalletPressed}>
+      <button id="walletButton" onClick={connectWalletPressed} className="walletButton">
         {walletAddress.length > 0 ? (
           "Connected: " +
           String(walletAddress).substring(0, 6) +
@@ -69,24 +69,24 @@ const Minter = (props) => {
       </button>
 
       <br></br>
-      <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
+      <h1 id="title">NFT Minter</h1>
       <p>
         Simply add your asset's link, name, and description, then press "Mint."
       </p>
       <form>
-        <h2>🖼 Link to asset: </h2>
+        <h2>Link to asset: </h2>
         <input
           type="text"
           placeholder="e.g. https://gateway.pinata.cloud/ipfs/<hash>"
           onChange={(event) => setURL(event.target.value)}
         />
-        <h2>🤔 Name: </h2>
+        <h2>Name: </h2>
         <input
           type="text"
           placeholder="e.g. My first NFT!"
           onChange={(event) => setName(event.target.value)}
         />
-        <h2>✍️ Description: </h2>
+        <h2> Description: </h2>
         <input
           type="text"
           placeholder="e.g. Even cooler than cryptokitties ;)"
@@ -94,7 +94,7 @@ const Minter = (props) => {
         />
       </form>
       <button id="mintButton" onClick={onMintPressed}>
-        Mint NFT
+        Mint your NFT
       </button>
       <p id="status">
         {status}
